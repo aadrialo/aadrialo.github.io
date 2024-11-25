@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdrisBarber</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to bottom right, rgb(223, 10, 10),rgba(175, 179, 233, 0.267),rgb(1, 1, 160));
+            color: #140202;
+            padding: 50px 0; /* Aumentado para que se vea mejor con la imagen */
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #333;
+            color: #000000;
+        }
+
+        /* Estilos adicionales para el formulario */
+        #formulario-contacto {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #formulario-contacto input,
+        #formulario-contacto textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        #formulario-contacto button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="agua">AdrisBarber</h1>
+        <h2>Barbero profesional </h2>
+        <nav>
+            <ul>
+                <b>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#lo-que-ofrezco">Lo que Ofrezco</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                </b>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="sobre-mi">
+            <h3>Sobre Mí</h3>
+            <p>Soy Adrián y llevo 4 años trabajando como barbero. Durante este tiempo he aprendido a dominar tanto <br> 
+                cortes clásicos como modernos, siempre buscando la mejor forma de resaltar el estilo de cada cliente. <br>
+                Me apasiona mi oficio y me esfuerzo por ofrecer un servicio de calidad, con atención al detalle y un ambiente <br>
+                cómodo. Cada corte es una oportunidad para seguir aprendiendo y perfeccionando mi técnica</p>
+        </section>
+
+        <section id="lo-que-ofrezco">
+            <h3>Lo que Ofrezco</h3>
+            <p>En mi barbería ofrezco una variedad de servicios personalizados para hombres que buscan un corte de calidad. <br> Desde cortes de cabello modernos y clásicos, hasta afeitados de precisión con navaja, todo adaptado a las <br> necesidades y gustos de cada cliente. Además, brindo un trato cercano y profesional, asegurándome de que <br> cada visita sea una experiencia cómoda y única. También ofrezco servicios de arreglo de barba, diseño de líneas <br> y cuidado de la piel, todo con productos de alta gama para garantizar los mejores resultados.</p>
+        </section>
+
+        <section id="testimonios">
+            <div class="testimonios">
+                <h2>Testimonios de nuestros clientes</h2>
+                <div class="testimonio">
+                    <p><strong>Carlos G.</strong>:</p>
+                    <p>"Adrián siempre sabe lo que necesito. Cada corte es perfecto, y el trato es excelente. Se nota que ama lo que hace. ¡Lo recomiendo al 100%!"</p>
+                </div>
+                <div class="testimonio">
+                    <p><strong>Luis M.</strong>:</p>
+                    <p>"Encontré a Adrián por casualidad, pero ahora no lo cambio por nada. Me hace sentir cómodo y siempre sale un corte de calidad. El mejor barbero de la zona."</p>
+                </div>
+                <div class="testimonio">
+                    <p><strong>Jorge P.</strong>:</p>
+                    <p>"Vengo desde hace un año y nunca me ha fallado. No solo es un gran barbero, sino que tiene una atención increíble. ¡Cada vez que salgo, me siento renovado!"</p>
+                </div>
+                <div class="testimonio">
+                    <p><strong>Felipe R.</strong>:</p>
+                    <p>"Me encanta cómo maneja mi barba. No solo me corta el pelo, me da recomendaciones sobre cómo mantenerla en su mejor forma. Se nota que entiende del oficio."</p>
+                </div>
+                <div class="testimonio">
+                    <p><strong>Eduardo T.</strong>:</p>
+                    <p>"Un servicio profesional y detallista. Adrián siempre se toma su tiempo para asegurar que cada corte quede a la perfección. No puedo pedir más."</p>
+                    <p>...</p>
+                </div>
+            </div>
+            
+        </section>
+
+        <section id="contacto">
+            <h3>Contacto</h3>
+            <button id="btn-contacto">Contáctenos</button>
+            <div id="formulario-contacto">
+                <h4>Formulario de Contacto</h4>
+                <input type="text" id="nombre" placeholder="Tu Nombre" required>
+                <input type="email" id="email" placeholder="Tu Correo Electrónico" required>
+                <textarea id="mensaje" rows="4" placeholder="Tu Mensaje" required></textarea>
+                <button id="enviar">Enviar</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AdrisBarber. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('btn-contacto').onclick = function() {
+            var formulario = document.getElementById('formulario-contacto');
+            formulario.style.display = formulario.style.display === 'none' ? 'block' : 'none';
+        };
+
+        document.getElementById('enviar').onclick = function() {
+            alert('Formulario enviado. Gracias por contactarnos!');
+            // Aquí puedes añadir la lógica para enviar el formulario
+        };
+    </script>
+</body>
+</html>
