@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aalo Barber - Un lugar donde estilo y arte se encuentran">
+    <meta name="keywords" content="barbería, cortes de pelo, estilo, arte">
+    <title>Aalo Barber</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            background-color: #000;
+            margin: 0;
+        }
+
+        header {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: url('https://img.freepik.com/fotos-premium/fondo-negro-fondo-negro-cinta-alrededor-borde_994023-380608.jpg') no-repeat center center/cover;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .navbar nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .navbar nav a:hover {
+            color: #f4c10f;
+        }
+
+        .navbar .cta {
+            padding: 10px 20px;
+            background: #f4c10f;
+            color: #000;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .navbar .cta:hover {
+            background: #d4a40e;
+        }
+
+        .header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+        }
+
+        .header-content h1 {
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .header-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .cuts-carousel {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .cuts-carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .cuts-carousel-images img {
+            width: 45%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 0 2.5%;
+        }
+
+        .cuts-carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 3;
+        }
+
+        .cuts-carousel-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cuts-carousel-buttons button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .locales {
+            padding: 50px 20px;
+            background-color: #111;
+        }
+
+        .locales h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .locales p {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .locales-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .local {
+            flex: 1 1 calc(50% - 40px);
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .local h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .local iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .local .cta {
+            padding: 10px 20px;
+            background: #f4c10f;
+            color: #000;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .local .cta:hover {
+            background: #d4a40e;
+        }
+
+        .cuts-section {
+            padding: 50px 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        .cuts-section h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .cuts-section p {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        footer {
+            background-color: #111;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        footer .footer-content {
+            margin-bottom: 20px;
+        }
+
+        footer .footer-content p {
+            font-size: 16px;
+        }
+
+        footer .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        footer .cta-buttons a {
+            padding: 10px 20px;
+            background: #f4c10f;
+            color: #000;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        footer .cta-buttons a:hover {
+            background: #d4a40e;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cuts-carousel-images img {
+                width: 90%;
+                height: auto;
+            }
+
+            .local {
+                flex: 1 1 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content h1 {
+                font-size: 36px;
+            }
+
+            .header-content p {
+                font-size: 16px;
+            }
+
+            .cuts-carousel-images img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            color: black; /* Set text color to black */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modal-content form label {
+            font-weight: bold;
+        }
+
+        .modal-content form input,
+        .modal-content form select,
+        .modal-content form textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .modal-content form button {
+            padding: 10px 20px;
+            background: #f4c10f;
+            color: #000;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .modal-content form button:hover {
+            background: #d4a40e;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">Aalo Barber</div>
+            <nav>
+                <a href="#">Hoy las reservas online</a>
+                <a href="#">De lunes a sábado</a>
+                <a href="#">Reservar cita</a>
+            </nav>
+            <a href="#" class="cta" id="openModal">Reservar cita</a>
+        </div>
+        <div class="header-content">
+            <h1>🇱 🇦  🇧 🇦 🇷 🇧 🇪 🇷 í🇦  🇩 🇪  🇱 🇴 🇸 <br> 🇦 🇷 🇹 🇮 🇸 🇹 🇦 🇸 </h1>
+            <p>Un lugar donde estilo y arte se encuentran</p>
+        </div>
+    </header>
+    <main>
+        <section class="cuts-section">
+            <h2>Algunos de nuestros cortes</h2>
+            <p>Descubre lo que podemos hacer por ti</p>
+            <div class="cuts-carousel">
+                <div class="cuts-carousel-images" id="cuts-carousel-images">
+                    <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                    <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                    <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">    
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">    
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">
+                <img src="https://i.pinimg.com/originals/a8/3f/f3/a83ff3b575ba15ad2a7d85de47b7c491.jpg" alt="Corte 1">
+                <img src="https://i.pinimg.com/236x/90/51/e0/9051e0a0d6a86f4c391e5538d078432d.jpg" alt="Corte 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSKjd9fPc5RSdpI0rvBPS7NcAj6YSnOowcQixg7gltS14jQU9Ci9pAbxSnCabs79krB8&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyW9bM23M-awreH4F1eqOeU6b1PGcCb5tr9IptqLF5j-dyGaXPuvaNyp3PYVULMP46LM&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97nDZPGMe15lRyouE7kvyyCZln7Tl0SNfDzLSY8zUrF6_QWwsiklUFfUzvBt2UQQs26Q&usqp=CAU" alt="Corte 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTre7WPlmFqxM8J2CWepAd8AVhE2hkepVcbV-Kq8Qp2joeC21JHGH4nseRdZjI-23Avosw&usqp=CAU" alt="Corte 4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQez04dd9actWvI3zNXABsjcB15RKNZhDoOujx2IKtMWRWiu5f_DEiFNf8TwhYFt7anX0&usqp=CAU" alt="Corte 4">    
+            
+                </div>
+                <div class="cuts-carousel-buttons">
+                    <button id="cuts-prev">&#10094;</button>
+                    <button id="cuts-next">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="locales">
+            <h2>Nuestros locales</h2>
+            <p>Reserva tu cita en uno de nuestros dos locales</p>
+            <div class="locales-container">
+                <div class="local">
+                    <h3>Nevada Shoping</h3>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50889.3063294994!2d-3.684476430468778!3d37.138866954903406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd71fb706506b77f%3A0x8e99ed521340a5ca!2sNevada%20Shopping!5e0!3m2!1ses!2ses!4v1737970019201!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <a href="#" class="cta" id="openModal">Reservar cita</a>
+                </div>
+                <div class="local">
+                    <h3>Centro Comercial Neptuno</h3>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6358.633585973352!2d-3.6099609250279427!3d37.16894174682848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd71fcf2ba5a659f%3A0xd3ce571471448ee9!2sCentro%20comercial%20Neptuno!5e0!3m2!1ses!2ses!4v1737970104657!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <a href="#" class="cta" id="openModal">Reservar cita</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>Email: aalobarber@contactmaneger.com</p>
+                    <p>Teléfono: +34 666 666 666</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horarios</h3>
+                    <p>Lunes a Sábado: 10:00 - 20:00</p>
+                    <p>Domingo: Cerrado</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/" class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Instagram-Icon.png/1024px-Instagram-Icon.png" alt="Instagram"></a>
+                        <a href="https://www.facebook.com/" class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/1024px-F_icon.svg.png" alt="Facebook"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Aalo Barber. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+        
+        <style>
+            footer {
+                background-color: #333;
+                color: white;
+                padding: 30px 20px;
+                text-align: center;
+            }
+        
+            .footer-content {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                margin-bottom: 20px;
+            }
+        
+            .footer-section {
+                flex: 1 1 30%;
+                margin-bottom: 20px;
+            }
+        
+            .footer-section h3 {
+                margin-bottom: 10px;
+                font-size: 20px;
+            }
+        
+            .footer-section p {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+        
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+        
+            .social-icon img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                transition: transform 0.3s;
+            }
+        
+            .social-icon img:hover {
+                transform: scale(1.2);
+            }
+        
+            .footer-bottom {
+                border-top: 1px solid #292828;
+                padding-top: 10px;
+            }
+        
+            .footer-bottom p {
+                font-size: 14px;
+            }
+        </style>
+        
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="reservationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Reservar Cita</h2>
+            <form id="reservationForm">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Teléfono:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="date">Fecha:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time">Hora:</label>
+                <input type="time" id="time" name="time" required>
+
+                <label for="service">Servicio:</label>
+                <select id="service" name="service" required>
+                    <option value="corte">Corte de Pelo</option>
+                    <option value="barba">Afeitado de Barba</option>
+                    <option value="completo">Corte y Afeitado</option>
+                </select>
+
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Debounce function to limit the rate at which a function can fire
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                const context = this;
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(context, args), wait);
+            };
+        }
+
+        const cutsCarouselImages = document.getElementById('cuts-carousel-images');
+        const cutsImages = document.querySelectorAll('.cuts-carousel-images img');
+        const cutsPrevButton = document.getElementById('cuts-prev');
+        const cutsNextButton = document.getElementById('cuts-next');
+
+        let cutsIndex = 1;
+        const totalImages = cutsImages.length / 2;
+
+        function showCutsImage(index) {
+            const translateX = -index * 50;
+            cutsCarouselImages.style.transform = `translateX(${translateX}%)`;
+        }
+
+        function updateIndex(newIndex) {
+            if (newIndex >= totalImages) {
+                newIndex = totalImages - 1;
+                setTimeout(() => {
+                    cutsCarouselImages.style.transition = 'none';
+                    cutsIndex = 1;
+                    showCutsImage(cutsIndex);
+                    setTimeout(() => {
+                        cutsCarouselImages.style.transition = 'transform 0.5s ease-in-out';
+                    }, 100);
+                }, 500);
+            } else if (newIndex < 0) {
+                newIndex = 0;
+                setTimeout(() => {
+                    cutsCarouselImages.style.transition = 'none';
+                    cutsIndex = totalImages - 1;
+                    showCutsImage(cutsIndex);
+                    setTimeout(() => {
+                        cutsCarouselImages.style.transition = 'transform 0.5s ease-in-out';
+                    }, 100);
+                }, 500);
+            } else {
+                cutsIndex = newIndex;
+                showCutsImage(cutsIndex);
+            }
+        }
+
+        cutsPrevButton.addEventListener('click', debounce(() => {
+            updateIndex(cutsIndex - 1);
+        }, 300));
+
+        cutsNextButton.addEventListener('click', debounce(() => {
+            updateIndex(cutsIndex + 1);
+        }, 300));
+
+        setInterval(() => {
+            updateIndex(cutsIndex + 1);
+        }, 5000);
+
+        // Modal functionality
+        const modal = document.getElementById('reservationModal');
+        const openModalButtons = document.querySelectorAll('#openModal');
+        const closeModalButton = document.querySelector('.close');
+
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+                modal.style.display = 'block';
+            });
+        });
+
+        closeModalButton.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Form submission
+        document.getElementById('reservationForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            alert('Cita reservada con éxito!');
+            modal.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
