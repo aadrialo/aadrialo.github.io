@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión Empresarial</title>
+    <link rel="stylesheet" href="./css/sge.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/52f7956bc9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="h1"></div>
+        <div class="h2">
+            <article><a href="./index.html"><b>Home</b></a></article>
+            <article><a href="./odoo.html"><b>Odoo</b></a></article>
+
+            <article>
+                <a target="_blank" href="https://www.facebook.com/?locale=es_ES"><i class="fa-brands fa-square-facebook"></i></a>
+                &nbsp;&nbsp;<a target="_blank" href="https://x.com/home?lang=es"><i class="fa-brands fa-x-twitter"></i></a>
+                &nbsp;&nbsp;<a target="_blank" href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+            </article>
+        </div>
+    </header>
+
+    <nav>
+        <div class="SGE">
+            <h1>¿Qué es la Gestión Empresarial?<hr></h1>
+        </div>
+        <div class="txt">
+            <p>
+                - La gestión empresarial es un procedimiento esencial para el éxito de cualquier negocio.
+                Es la capacidad de los líderes o dirigentes para coordinar, orientar y gestionar todos los recursos y procesos de una compañía con el fin de lograr las metas financieras, productivas y de expansión, considerando a sus empleados como uno de los componentes más relevantes.
+                 <br> <br>
+                - También conlleva la toma de decisiones estratégicas y la puesta en marcha de estrategias para incrementar la eficiencia y rentabilidad de la empresa.
+            </p>
+        </div>
+    </nav>
+
+    <main>
+        <div class="SGE">
+            <h1>¿Qué es un sistema de gestión empresarial?<hr></h1>
+        </div>
+        <div class="txt">
+            <p>
+                <br><br>
+                - Un Sistema de Gestión Empresarial (SGE) es un conjunto de aplicaciones o software diseñado para administrar y coordinar diferentes áreas de la organización, como producción, finanzas, recursos humanos, ventas y logística.
+                Estos sistemas facilitan el flujo de datos entre departamentos, evitan la duplicación de información y mejoran el control de los procesos internos.
+                <br><br>
+                - Además, permiten centralizar la información en una sola plataforma, facilitando la colaboración y permitiendo decisiones más acertadas basadas en datos.
+            </p>
+        </div>
+    </main>
+
+<aside class="asid">
+    <div class="cabecera">  
+        <h1 class="titulo">Tipos de software de gestión empresarial</h1>
+        <hr class="linea">
+    </div>
+    
+    <div class="contenido">
+        <p class="intro">Existen diferentes tipos de software de gestión empresarial, tanto integrales como especializados. Algunos ejemplos son:</p>
+        
+        <div class="item">
+            <h2 class="subtitulo">ERP <span class="aclaracion">(Sistema de planificación de recursos empresariales)</span></h2>
+            <p class="texto">Software integral que gestiona todas las áreas de la empresa.</p>
+        </div>
+
+        <div class="item">
+            <h2 class="subtitulo">CRM <span class="aclaracion">(Gestión de relaciones con los clientes)</span></h2>
+            <p class="texto">Facilita la gestión comercial, marketing y ventas.</p>
+        </div>
+
+        <div class="item">
+            <h2 class="subtitulo">Gestión de recursos humanos</h2>
+            <p class="texto">Administra nóminas, vacaciones, permisos y desempeño del personal.</p>
+        </div>
+
+        <div class="item">
+            <h2 class="subtitulo">Gestión de proyectos</h2>
+            <p class="texto">Planifica, organiza y controla proyectos y tareas.</p>
+        </div>
+
+        <div class="item">
+            <h2 class="subtitulo">Inteligencia empresarial y análisis de datos</h2>
+            <p class="texto">Analiza y visualiza datos para tomar decisiones informadas. Ej.: Power BI, Tableau, Qlik.</p>
+        </div>
+
+        <div class="item">
+            <h2 class="subtitulo">Comercio electrónico</h2>
+            <p class="texto">Plataformas que permiten vender productos o servicios en línea.</p>
+        </div>
+
+        <div class="item">
+            <h2 class="subtitulo">Portal del cliente</h2>
+            <p class="texto">Permite a los clientes consultar pedidos, facturas y documentos desde cualquier lugar.</p>
+        </div>
+
+        <div class="item">
+            <h2 class="subtitulo">Gestión de almacenes</h2>
+            <p class="texto">Optimiza procesos logísticos y el control del stock.</p>
+        </div>
+
+        <div class="item">
+            <h2 class="subtitulo">Automatización robótica de procesos <span class="aclaracion">(RPA)</span></h2>
+            <p class="texto">Utiliza bots para replicar tareas humanas en sistemas digitales.</p>
+        </div>
+
+        <div class="item">
+            <h2 class="subtitulo">Gestión documental</h2>
+            <p class="texto">Organiza, clasifica y permite acceso rápido a documentación empresarial.</p>
+        </div>
+    </div>
+</aside>
+
+
+    <footer>
+        <p>&copy; 2025 - Gestión Empresarial <br><br> Adrian Alonso Piñar 1ºASIR C</p>
+    </footer>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const botonMenu = document.createElement('div');
+        botonMenu.className = 'menu-toggle';
+        botonMenu.innerHTML = '<i class="fas fa-bars"></i>';
+        document.querySelector('header').appendChild(botonMenu);
+        
+        const menu = document.querySelector('header div.h2');
+        
+        botonMenu.addEventListener('click', function() {
+            menu.classList.toggle('active');
+            const icono = this.querySelector('i');
+            if (menu.classList.contains('active')) {
+                icono.classList.remove('fa-bars');
+                icono.classList.add('fa-times');
+            } else {
+                icono.classList.remove('fa-times');
+                icono.classList.add('fa-bars');
+            }
+        });
+        const enlacesMenu = document.querySelectorAll('header div.h2 article a');
+        enlacesMenu.forEach(enlace => {
+            enlace.addEventListener('click', function() {
+                if (window.innerWidth <= 767) {
+                    menu.classList.remove('active');
+                    botonMenu.querySelector('i').classList.remove('fa-times');
+                    botonMenu.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/odoo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/52f7956bc9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <Header>
+        <div class="h1"></div>
+        <div class="h2">
+            <article>
+                <a href="./index.html"><b>Home</b></a>
+            </article>
+            <article>
+                <a href="./config.html"><b>Configuracion Odoo</b></a>
+            </article>
+            <article>
+                <a href="./sge.html"><b>¿Que es un SGE?</b></a>
+            </article>
+            
+            <article>
+                <a target="_blank" href="https://www.facebook.com/?locale=es_ES"><i class="fa-brands fa-square-facebook"></i></a>
+                &nbsp;&nbsp;<a target="_blank" href="https://x.com/home?lang=es"><i class="fa-brands fa-x-twitter"></i></a>
+                &nbsp;&nbsp;<a target="_blank" href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+            </article>
+        </div>
+    </Header>
+
+    <nav>
+        <div class="SGE">
+            <h1>¿Qué es Odoo?<hr></h1>
+        </div>
+        <div class="txt">
+            <p>
+                <a href="https://www.odoo.com/es_ES">Odoo</a> o también conocido como Odoo ERP es un software de gestión empresarial de código abierto. Permite una total integración y personalización, ofreciendo una solución para supervisar diversos aspectos de las operaciones de e-commerce. <br> <br>
+                Entre sus funcionalidades destacadas se encuentran la gestión de ventas y marketing, relaciones con clientes, supervisión de proyectos, fabricación, control de inventario, contabilidad, administración de recursos humanos, gestión de servicio al cliente y otras aplicaciones. <br> <br> 
+                Aquí se muestran los pasos para instalar <a href="https://www.odoo.com/es_ES">Odoo</a>:
+            </p>
+        </div>
+    </nav>
+
+
+
+    <main>
+        <div class="item">
+            <h1 class="titu">1.</h1>
+            <p class="ttx">Entramos en la pagina oficial de Odoo</p>
+            <div class="img1"></div>
+        </div>
+        <div class="item">
+            <h1 class="titu">2.</h1>
+            <p class="ttx">Bajamos hasta el fondo de la pagina y en "Codigo Abierto" le daremos a "Descargar"</p>
+            <div class="img2"></div>
+        </div>
+        <div class="item">
+            <h1 class="titu">3.</h1>
+            <p class="ttx">Seleccionamos nuestro sistema operativo y descargamos el "Community"</p>
+            <div class="img3"></div>
+        </div>
+        <div class="item">
+            <h1 class="titu">4.</h1>
+            <p class="ttx">Una vez descargamos iniciamos el .exe que descargamos</p>
+            <div class="img4"></div>
+        </div>
+        <div class="item">
+            <h1 class="titu">5.</h1>
+            <p class="ttx">Seleccionamos instalar Odoo y PostgreSQL</p>
+            <div class="img5"></div>
+        </div>
+        <div class="item">
+            <h1 class="titu">6.</h1>
+            <p class="ttx">Seleccionamos la configuracion para PostgreSQL</p>
+            <div class="img6"></div>
+        </div>
+        <div class="item">
+            <h1 class="titu">7.</h1>
+            <p class="ttx">Instalamos Odoo</p>
+            <div class="img7"></div>
+        </div>
+        <div class="item">
+            <h1 class="titu">8.</h1>
+            <p class="ttx">Cuando acabe la descarga podremos empezar a utilizar Odoo</p>
+            <div class="img8"></div>
+        </div>
+        <div class="item">
+            <h1 class="titu">9.</h1>
+            <p class="ttx">Arriba derecha si le damos, podremos descargar la app por si no quieres trabajar desde la web</p>
+            <div class="img9"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Gestión Empresarial <br><br> Adrian Alonso Piñar 1ºASIR C</p>
+    </footer>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const botonMenu = document.createElement('div');
+        botonMenu.className = 'menu-toggle';
+        botonMenu.innerHTML = '<i class="fas fa-bars"></i>';
+        document.querySelector('header').appendChild(botonMenu);
+        
+        const menu = document.querySelector('header div.h2');
+        
+        botonMenu.addEventListener('click', function() {
+            menu.classList.toggle('active');
+            const icono = this.querySelector('i');
+            if (menu.classList.contains('active')) {
+                icono.classList.remove('fa-bars');
+                icono.classList.add('fa-times');
+            } else {
+                icono.classList.remove('fa-times');
+                icono.classList.add('fa-bars');
+            }
+        });
+        const enlacesMenu = document.querySelectorAll('header div.h2 article a');
+        enlacesMenu.forEach(enlace => {
+            enlace.addEventListener('click', function() {
+                if (window.innerWidth <= 767) {
+                    menu.classList.remove('active');
+                    botonMenu.querySelector('i').classList.remove('fa-times');
+                    botonMenu.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+    });
+</script>
+</html>

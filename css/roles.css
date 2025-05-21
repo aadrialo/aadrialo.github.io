@@ -1,0 +1,420 @@
+* {
+    vertical-align: top;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "letralaL";
+    src: url(../fonts/Aceh-Light.ttf);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    display: grid;
+    grid-template-columns: 5% 45% 45% 5%;
+    grid-template-rows: 150px 500px auto 100px;
+    grid-template-areas: 
+        "header header header header"
+        ". nav nav ."
+        ". main main ."
+        "footer footer footer footer";
+}
+
+header {
+    grid-area: header;
+    display: flex;
+    background: linear-gradient(135deg, #875A7B 0%, #6E48AA 100%);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+header div.h1 {
+    width: 15%;
+    height: 100%;
+    background-image: url("../img/11f50211d1d64bf686aa81fd23e0c07e-free.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+header div.h2 {
+    display: flex;
+    width: 85%;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 5%;
+}
+
+header div.h2 article {
+    width: auto;
+    height: 100%;
+    padding: 0 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    font-family: letralaL;
+    transition: all 0.3s ease;
+}
+
+header div.h2 article a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+    position: relative;
+}
+
+header div.h2 article a:hover {
+    color: white;
+    text-shadow: none;
+}
+
+header div.h2 article a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+header div.h2 article a:hover:after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    padding: 15px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    background-color: rgba(110, 72, 170, 0.7);
+    border-radius: 4px;
+}
+
+.menu-toggle i {
+    color: white;
+    font-size: 1.5rem;
+}
+
+nav {
+    grid-area: nav;
+    background-color: white;
+    border-radius: 20px;
+    padding: 50px;
+    height: 100%;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.13);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(110, 72, 170, 0.1);
+    margin: 10px auto;
+}
+
+nav .SGE h1 {
+    font-family: "letralaL", sans-serif;
+    font-size: 2.4rem;
+    color: #6e48aa;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+nav .SGE hr {
+    border: none;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(110, 72, 170, 0.2) 0%, #6E48AA 50%, rgba(110, 72, 170, 0.2) 100%);
+    margin: 15px auto 30px;
+    width: 60%;
+    border-radius: 2px;
+}
+
+nav .txt {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.15rem;
+    color: #444;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav .txt p a {
+    color: #ca85b8;
+    text-decoration: none;
+}
+
+nav .txt p {
+    margin-bottom: 25px;
+    position: relative;
+    padding-left: 20px;
+}
+
+main {
+    grid-area: main;
+    padding: 20px 5%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.item {
+    display: flex;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #6E48AA 0%, #875A7B 100%);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.511);
+    border: 3px solid #cc69b2;
+    height: 600px;
+    width: 100%;
+    min-height: 250px;
+}
+
+.titu {
+    flex: 0 0 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    color: white;
+    padding: 20px;
+}
+
+.ttx {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.img1, .img2, .img3, .img4, .img5{
+    flex: 1;
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(147, 76, 174, 0.37);
+}
+
+.img1 { 
+    background-image: url("../img/unoc.png"); 
+}
+.img2 { 
+    background-image: url("../img/dosc.png"); 
+}
+.img3 { 
+    background-image: url("../img/tresc.png"); 
+}
+.img4 { 
+    background-image: url("../img/cuatroc.png"); 
+}
+.img5 { 
+    background-image: url("../img/cincoc.png"); 
+}
+
+footer {
+    grid-area: footer;
+    background-color: #1e1e1e;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    padding: 15px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 1000;
+}
+
+.menu-toggle i {
+    color: white;
+    font-size: 1.5rem;
+}
+
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    padding: 15px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 1000;
+    background-color: rgba(110, 72, 170, 0.7);
+    border-radius: 4px;
+}
+
+.menu-toggle i {
+    color: white;
+    font-size: 1.5rem;
+}
+
+
+@media (max-width: 1024px) {
+    body {
+        grid-template-columns: 2% 96% 2%;
+        grid-template-rows: 150px auto auto auto 100px;
+    }
+    
+    nav, main {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        grid-template-areas: "tit"
+                             "text"
+                             "foto";
+        padding-bottom: 30px;
+    }
+    
+    nav div.ft, main div.ft {
+        width: 80%;
+        height: 300px;
+        margin: 20px auto;
+    }
+    
+    aside {
+        width: 80%;
+    }
+    
+    .formulario {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        grid-template-columns: 2% 96% 2%;
+        grid-template-rows: 80px auto auto auto auto 100px;
+    }
+    
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+        position: relative;
+    }
+    
+    header div.h1 {
+        width: 100%;
+        height: 60px;
+    }
+    
+    header div.h2 {
+        background: linear-gradient(135deg, #6E48AA 0%, #875A7B 100%);
+        width: 100%;
+        padding: 0;
+        flex-direction: column;
+        height: auto;
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        z-index: 999;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform-origin: top center;
+    }
+    
+    header div.h2.active {
+        display: flex;
+        transform: scaleY(1);
+        opacity: 1;
+    }
+    
+    header div.h2 article {
+        width: 100%;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        text-align: center;
+        transition: background-color 0.2s ease;
+    }
+    
+    header div.h2 article:hover {
+        background-color: rgba(255,255,255,0.1);
+    }
+    
+    header div.h2 article a {
+        color: white ;
+        font-size: 1.2rem;
+        padding: 10px 0;
+        display: block;
+        width: 100%;
+        min-height: 44px;
+        line-height: 44px;
+        text-decoration: none;
+    }
+    
+    header div.h2 article:last-child {
+        background: rgba(0,0,0,0.1);
+        padding: 15px 0;
+    }
+    
+    header div.h2 article a i {
+        font-size: 1.5rem;
+        margin: 0 10px;
+        vertical-align: middle;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+
+
+
+    nav {
+        padding: 20px;
+        margin: 15px 0;
+    }
+    
+    nav .SGE h1 {
+        font-size: 1.8rem;
+    }
+    
+    nav .txt {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+    
+    .item {
+        flex-direction: column;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    
+    .titu {
+        flex: 0 0 auto;
+        padding: 10px;
+        font-size: 2.5rem;
+    }
+    
+    .ttx {
+        padding: 15px;
+        font-size: 1.1rem;
+    }
+    
+    .img1, .img2, .img3, .img4, .img5{
+        min-height: 200px;
+        background-size: contain;
+        background-color: rgba(147, 76, 174, 0.5);
+    }
+}

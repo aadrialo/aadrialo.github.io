@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/trabajo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/52f7956bc9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <Header>
+        <div class="h1">
+        </div>
+        <div class="h2">
+            <article>
+                <a href="./sge.html"><b>¿Que es un SGE?</b></a>
+            </article>
+            <article>
+                <a href="./odoo.html"><b>Odoo</b></a>
+            </article>
+            <article>
+                <a href="#cuest"><b>Contactanos</b></a>
+            </article>
+            <article>
+                <a target="_blank" href="https://www.facebook.com/?locale=es_ES"><i class="fa-brands fa-square-facebook"></i></a>
+                &nbsp;&nbsp;<a target="_blank" href="https://x.com/home?lang=es"><i class="fa-brands fa-x-twitter"></i></a>
+                &nbsp;&nbsp;<a target="_blank" href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+            </article>
+        </div>
+    </Header>
+
+
+
+    <nav>
+        <div class="SGE">
+            <h1>¿Que es un SGE?
+                <hr>
+            </h1>
+        </div>
+        <div class="txt">
+            <p>
+                
+                Un SGE(Sistema de Gestion Empresarial) es un software que nos permite centralizar y gestionar todas las áreas de una empresa desde una unica aplicación
+                <br> <br>
+                Esto nos va a ahorrar tiempo y recursos, eliminar trabajo duplicado, automatizar procesos, entre otras muchas ventajas
+                <br> <br>
+                Un buen ejemplo de SGE seria Odoo
+                <br> <br>
+                <a class="a1" href="./sge.html"><b>Más información</b></a>
+            </p>
+        </div>
+        <div class="ft">
+
+        </div>
+    </nav>
+
+    <main>
+        <div class="SGE">
+            <h1>Odoo
+                <hr>
+            </h1>
+        </div>
+        <div class="txt">
+            <p>Es un SGE de codigo abierto que tiene CRM, sitio web y comercio electionico, facturacion, fabricacion, contabilidad
+                gestio de almacenes y proyectos, e inventrario entre otras muchas funcionalidades </p>
+                <br> 
+                <a class="a2" href="./odoo.html"><b>Más información</b></a>
+        </div>
+        
+        <div class="ft">
+
+        </div>
+    </main>
+
+
+
+
+
+
+    <aside id="cuest">
+        <div>
+            <form class="formulario" type="submit">
+                <div class="titulo">
+                    <h2>CONTACTA CON NUESTROS SOPORTE</h2>
+                    <hr>
+                </div>
+                <div class="grupo1">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="grupo2">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" name="apellido" required>
+                </div>
+                <div class="grupo3">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="grupo4">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+                <div class="grupo5">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="boton-enviar">Enviar</button>
+            </form>
+        </div>
+    </aside>
+    
+    <footer>
+        <p>&copy; 2025 - Gestión Empresarial <br><br> Adrian Alonso Piñar 1ºASIR C</p>
+    </footer>
+
+
+
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const botonMenu = document.createElement('div');
+        botonMenu.className = 'menu-toggle';
+        botonMenu.innerHTML = '<i class="fas fa-bars"></i>';
+        document.querySelector('header').appendChild(botonMenu);
+        
+        const menu = document.querySelector('header div.h2');
+        
+        botonMenu.addEventListener('click', function() {
+            menu.classList.toggle('active');
+            const icono = this.querySelector('i');
+            if (menu.classList.contains('active')) {
+                icono.classList.remove('fa-bars');
+                icono.classList.add('fa-times');
+            } else {
+                icono.classList.remove('fa-times');
+                icono.classList.add('fa-bars');
+            }
+        });
+        
+        // Cerrar el menú al hacer clic en un enlace (para móviles)
+        const enlacesMenu = document.querySelectorAll('header div.h2 article a');
+        enlacesMenu.forEach(enlace => {
+            enlace.addEventListener('click', function() {
+                if (window.innerWidth <= 767) {
+                    menu.classList.remove('active');
+                    botonMenu.querySelector('i').classList.remove('fa-times');
+                    botonMenu.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+    });
+</script>
+
+
+
+</html>

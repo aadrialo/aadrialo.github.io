@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/exp.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/52f7956bc9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <Header>
+        <div class="h1"></div>
+        <div class="h2">
+            <article>
+                <a href="./index.html"><b>Home</b></a>
+            </article>
+            <article>
+                <a href="./odoo.html"><b>Odoo</b></a>
+            </article>
+            <article>
+                <a href="./roles.html"><b>Roles y accesibilidad</b></a>
+            </article>
+            <article>
+                <a target="_blank" href="https://www.facebook.com/?locale=es_ES"><i class="fa-brands fa-square-facebook"></i></a>
+                &nbsp;&nbsp;<a target="_blank" href="https://x.com/home?lang=es"><i class="fa-brands fa-x-twitter"></i></a>
+                &nbsp;&nbsp;<a target="_blank" href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+            </article>
+        </div>
+    </Header>
+
+    <nav>
+        <div class="SGE">
+            <h1>Acceso seguro<hr></h1>
+        </div>
+        <div class="txt">
+            <p>
+                Odoo permite elaborar y exportar informes usando la funcion "Exportar" en un modulo en especifico
+                <br> <br> 
+                Aquí se muestra la información para extraer esto:
+            </p>
+        </div>
+    </nav>
+
+
+
+    <main>
+        <div class="item">
+            <h1 class="titu">1.</h1>
+            <p class="ttx">1.1 -Abrir la vista de lista <br><br>
+                           1.2 -Seleccionar los registros <br><br> 
+                           1.3 -Hacer clic en "Acciones" <br><br>
+                           1.4 -Seleccionar "Exportar"  <br><br>
+                           1.5 -Seleccionar el formato <br><br>
+                           1.6 -Hacer clic en "Exportar" <br><br>
+                           1.7 -Descargar el archivo
+                           </p>
+                         </div>
+                    </main>
+    <footer>
+        <p>&copy; 2025 - Gestión Empresarial <br><br> Adrian Alonso Piñar 1ºASIR C</p>
+    </footer>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const botonMenu = document.createElement('div');
+        botonMenu.className = 'menu-toggle';
+        botonMenu.innerHTML = '<i class="fas fa-bars"></i>';
+        document.querySelector('header').appendChild(botonMenu);
+        
+        const menu = document.querySelector('header div.h2');
+        
+        botonMenu.addEventListener('click', function() {
+            menu.classList.toggle('active');
+            const icono = this.querySelector('i');
+            if (menu.classList.contains('active')) {
+                icono.classList.remove('fa-bars');
+                icono.classList.add('fa-times');
+            } else {
+                icono.classList.remove('fa-times');
+                icono.classList.add('fa-bars');
+            }
+        });
+        const enlacesMenu = document.querySelectorAll('header div.h2 article a');
+        enlacesMenu.forEach(enlace => {
+            enlace.addEventListener('click', function() {
+                if (window.innerWidth <= 767) {
+                    menu.classList.remove('active');
+                    botonMenu.querySelector('i').classList.remove('fa-times');
+                    botonMenu.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+    });
+</script>
+</html>
