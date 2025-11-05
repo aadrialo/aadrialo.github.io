@@ -4,9 +4,266 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nombre Profesional | Ingeniero de Software</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
-    </head>
+    
+    <style>
+        /* Variables y Reset Básico */
+        :root {
+            --color-bg: #0A192F;         /* Azul marino oscuro (Fondo) */
+            --color-text-main: #CCD6F6;  /* Blanco grisáceo (Texto Principal) */
+            --color-text-secondary: #8892B0; /* Gris azulado (Descripción) */
+            --color-accent: #64FFDA;     /* Verde cian brillante (Acento) */
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text-main);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased; /* Mejora la apariencia del texto */
+        }
+
+        /* Utilidades */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+        
+        .section-padding {
+            padding: 100px 0;
+        }
+        
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #90f0c0; /* Un tono más claro al pasar el ratón */
+        }
+
+        /* ------------------------- */
+        /* 1. CABECERA Y NAVEGACIÓN  */
+        /* ------------------------- */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background-color: rgba(10, 25, 47, 0.95); /* Fondo semitransparente con desenfoque */
+            backdrop-filter: blur(10px); 
+        }
+
+        .logo-link {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            color: var(--color-accent);
+        }
+        
+        .logo-prefix {
+            color: var(--color-text-secondary);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .main-nav li {
+            margin-left: 30px;
+        }
+
+        .nav-link {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--color-text-main);
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--color-accent);
+        }
+        
+        .nav-link::before { /* Animación sutil bajo el enlace */
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--color-accent);
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+            left: 0;
+        }
+        
+        /* ------------------------- */
+        /* 2. SECCIÓN PRINCIPAL (HERO) */
+        /* ------------------------- */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 80vh; /* Altura de pantalla */
+            padding-top: 50px;
+        }
+
+        .intro-greeting {
+            color: var(--color-accent);
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .main-title {
+            font-size: clamp(40px, 8vw, 70px); /* Título responsivo y grande */
+            color: var(--color-text-main);
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: clamp(30px, 6vw, 55px);
+            color: var(--color-text-secondary);
+            margin: 0 0 25px 0;
+        }
+
+        .hero-description {
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+        }
+        
+        .primary-button {
+            display: inline-block;
+            padding: 15px 25px;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .primary-button:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+            color: var(--color-accent); /* Mantiene el color del texto */
+        }
+        
+        /* ------------------------- */
+        /* 3. PROYECTOS Y SECCIONES  */
+        /* ------------------------- */
+        .section-heading {
+            font-size: 1.7rem;
+            margin-bottom: 50px;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .heading-number {
+            color: var(--color-accent);
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            margin-right: 15px;
+        }
+        
+        /* Estructura de Proyectos (Flexbox para tarjetas) */
+        .projects-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en móvil */
+        }
+
+        .project-card {
+            background-color: #112240; /* Fondo ligeramente diferente para destacar */
+            padding: 25px;
+            border-radius: 4px;
+            flex: 1 1 300px; /* Base para 3 tarjetas por fila en escritorio */
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7); /* Sombra sutil */
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px); /* Efecto 3D sutil al pasar el ratón */
+        }
+
+        .card-title {
+            color: var(--color-text-main);
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            color: var(--color-text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .tech-stack span {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+            margin-right: 15px;
+        }
+        
+        /* ------------------------- */
+        /* 4. PIE DE PÁGINA          */
+        /* ------------------------- */
+        .main-footer {
+            padding: 50px 0 20px 0;
+            text-align: center;
+        }
+
+        .footer-note {
+            color: var(--color-text-secondary);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .social-links-footer a {
+            color: var(--color-text-secondary);
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links-footer a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Media Queries (Diseño Responsivo) */
+        @media (max-width: 768px) {
+            .main-header {
+                padding: 20px 25px;
+            }
+            .main-nav {
+                display: none; /* Ocultar el menú de navegación para simplificar, usar un menú hamburguesa en un proyecto real */
+            }
+            .hero-section {
+                min-height: 70vh;
+            }
+            .projects-grid {
+                flex-direction: column; /* Apilar tarjetas en dispositivos pequeños */
+            }
+        }
+    </style>
+</head>
 <body>
 
     <header class="main-header">
@@ -18,9 +275,8 @@
         <nav class="main-nav">
             <ul>
                 <li><a href="#about" class="nav-link">Sobre Mí</a></li>
-                <li><a href="#experience" class="nav-link">Experiencia</a></li>
                 <li><a href="#projects" class="nav-link">Proyectos</a></li>
-                <li><a href="#contact" class="nav-link cta-nav">Contacto</a></li>
+                <li><a href="#contact" class="nav-link">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -35,7 +291,7 @@
                 Construyo soluciones digitales escalables.
             </h2>
             <p class="hero-description">
-                Soy un ingeniero de software especializado en el *desarrollo full-stack*. Mi enfoque se centra en la creación de aplicaciones robustas y eficientes, utilizando tecnologías modernas como **React** y **Node.js**.
+                Soy un ingeniero de software especializado en el **desarrollo full-stack**. Mi enfoque se centra en la creación de aplicaciones robustas y eficientes, utilizando tecnologías modernas como **React** y **Node.js**.
             </p>
             <a href="cv.pdf" target="_blank" class="primary-button">
                 Descargar CV <span class="arrow-icon">&rarr;</span>
@@ -48,17 +304,25 @@
             <div class="projects-grid">
                 <article class="project-card">
                     <h4 class="card-title">Sistema de Gestión ERP</h4>
-                    <p class="card-description">Plataforma interna optimizada para la logística, implementada con Python (Django) y PostgreSQL.</p>
+                    <p class="card-description">Plataforma interna optimizada para la logística y reportes de datos, implementada con Python (Django).</p>
                     <div class="tech-stack">
                         <span>Python</span> <span>Django</span> <span>PostgreSQL</span>
                     </div>
                 </article>
                 
                 <article class="project-card">
-                    <h4 class="card-title">API RESTful para Datos</h4>
-                    <p class="card-description">Desarrollo de una API de alto rendimiento para el procesamiento de datos en tiempo real.</p>
+                    <h4 class="card-title">API RESTful de Alto Rendimiento</h4>
+                    <p class="card-description">Desarrollo de una API escalable para el procesamiento de datos en tiempo real, con caché optimizado.</p>
                     <div class="tech-stack">
                         <span>Node.js</span> <span>Express</span> <span>MongoDB</span>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <h4 class="card-title">Landing Page de SaaS</h4>
+                    <p class="card-description">Página de mercadeo con enfoque en conversión y optimización SEO, utilizando un framework moderno.</p>
+                    <div class="tech-stack">
+                        <span>Next.js</span> <span>Tailwind CSS</span> <span>Vercel</span>
                     </div>
                 </article>
             </div>
@@ -66,8 +330,8 @@
 
         <section id="contact" class="section-padding container">
             <h3 class="section-heading"><span class="heading-number">02.</span> Contacto</h3>
-            <p class="contact-text">
-                ¿Tienes una propuesta o quieres colaborar? Mi bandeja de entrada está abierta.
+            <p class="hero-description" style="max-width: 500px;">
+                ¿Tienes una propuesta interesante, una consulta técnica o quieres colaborar en un proyecto? Mi bandeja de entrada siempre está abierta.
             </p>
             <a href="mailto:tunombre@email.com" class="primary-button email-button">
                 Envíame un Correo
@@ -76,11 +340,11 @@
     </main>
 
     <footer class="main-footer">
-        <p class="footer-note">Diseñado y Construido por [Tu Nombre] &copy; 2025</p>
         <div class="social-links-footer">
             <a href="#" target="_blank">GitHub</a>
             <a href="#" target="_blank">LinkedIn</a>
         </div>
+        <p class="footer-note">Diseñado y Construido por [Tu Nombre] &copy; 2025</p>
     </footer>
 
 </body>
